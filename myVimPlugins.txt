@@ -1,0 +1,7 @@
+emmet-vim
+nerdtree
+powerline
+vim-colors-solarized
+vim-guicolorscheme
+vim-sensible
+YouCompleteMe
