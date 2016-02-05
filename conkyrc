@@ -1,0 +1,75 @@
+ background yes
+    font Bitstream Vera Sans:size=9
+    xftfont Bitstream Vera Sans:size=9
+    use_xft yes
+    xftalpha 0.1
+    update_interval 0.8
+    total_run_times 0
+    own_window yes
+    own_window_type background
+    own_window_transparent yes
+    own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+    double_buffer yes
+    draw_shades no
+    draw_outline no
+    draw_borders no
+    draw_graph_borders yes
+    minimum_size 300
+    maximum_width 310
+    default_color white
+    default_shade_color 000000
+    default_outline_color 000000
+    alignment top_right
+    gap_x 10
+    gap_y 25
+    no_buffers yes
+    cpu_avg_samples 2
+    override_utf8_locale yes
+    uppercase no # set to yes if you want all text to be in uppercase
+    use_spacer right
+
+    TEXT
+    $alignc Hostname: $nodename
+    $alignc Kernel: $kernel
+    $alignc Uptime: $uptime
+    $alignc GeForce 9500 GT: ${color orange}${execi 10 nvidia-settings -q gpucoretemp |grep ')'|cut -c45-46}${color white}°C
+    ${font DejaVuSans:Condensed:Bold:size=20} ${tztime}${font Bitstream Vera Sans:size=9}
+    ${color #B8FF00}CPU:${color white}
+    Core0:$alignr ${cpu cpu1}%@${freq_g cpu1}GHz ${cpubar cpu1 7,50} Temp: ${color orange}${execi 		10 sensors | grep "Core 0:" | awk '{print $3}'}
+    Core1:$alignr ${cpu cpu2}%@${freq_g cpu2}GHz ${cpubar cpu2 7,50} Temp: ${color orange}${execi 		10 sensors | grep "Core 1:" | awk '{print $3}'}
+
+    Overall Usage:$alignr $cpu% $alignr${cpubar 8,170}
+    ${cpugraph 30,}
+    Highest CPU $alignr CPU%   MEM%
+    ${top name 1}$alignr${top cpu 1}     ${top mem 1}
+    ${top name 2}$alignr${top cpu 2}     ${top mem 2}
+
+    ${color #B8FF00}MEM:${color white}
+    RAM ${alignr}$mem / $memmax ($memperc%)
+    ${membar 8}
+    SWAP ${alignr}$swap / $swapmax ($swapperc%)
+    ${swapbar 8}
+    Highest MEM $alignr CPU%   MEM%
+    ${top_mem name 1}$alignr${top_mem cpu 1}     ${top_mem mem 1}
+    ${top_mem name 2}$alignr${top_mem cpu 2}     ${top_mem mem 2}
+
+    ${color #B8FF00}HDD:${color white} ${alignr} HDD Temp: ${color orange}${execi 1 /home/ghostrider/.conky_script_hddtemp}.0${color white}°C
+    home: ${alignc} ${fs_bar 8,75 /home/bialx} ${alignr} ${fs_free /home/bialx}  /   ${fs_size /home/bialx} (${fs_free_perc /home/bialx}%)
+    media: ${alignc} ${fs_bar 8,75 /media/multimedia} ${alignr}${fs_free /media/multimedia}  /   ${fs_size /media/multimedia} (${fs_free_perc /media/multimedia}%)
+    inne: ${alignc} ${fs_bar 8,75 /media/inne} ${alignr}${fs_free /media/inne}  /  ${fs_size /media/inne} (${fs_free_perc /media/inne}%)
+    ${color white}HDD Read-> ${alignc}${color green}${diskio_read}/s ${alignr}${color #FF0009}${diskio_write}/s ${color white}<-HDD Write
+    ${color green}${diskiograph_read 20,150} ${alignr}${color #FF0009}${diskiograph_write 20,150}${color white}
+
+    ${color #B8FF00}LAN:${color white} ${alignr}IP: ${addr eth0}
+    ${color green}LAN Download:                  $alignr${color #FF0009}LAN Upload:
+    ${color green}${downspeed eth0} k/s                                  ${alignr}     ${color #FF0009} ${upspeed eth0} k/s
+    ${color green}${downspeedgraph eth0 20,150} ${alignr}${color #FF0009}${upspeedgraph eth0 20,150}
+    ${color green}Total:${totaldown eth0}  ${alignr}${color #FF0009}Total:${totalup eth0}
+
+    ${color #B8FF00}WiFi:${color white} ${alignc}                 IP: ${addr wlan0} ${alignr}Rate:${color orange}${wireless_bitrate wlan0}${color white}
+    Link quality: ${color orange}${wireless_link_qual_perc wlan0}%${color white} ${alignr}${wireless_link_bar 8,185 wlan0}
+    ${color green}WiFi Download: ${color white}${alignc}    ESSID: ${color orange}${wireless_essid wlan0}${color white} $alignr${color #FF0009}WiFi Upload:
+    ${color green}${downspeed wlan0}KB/s    ${color #FF0009} ${alignr}${upspeed wlan0}KB/s
+    ${color green}${downspeedgraph wlan0 20,150} ${alignr}${color #FF0009}${upspeedgraph wlan0 20,150}
+    ${color green}Total:${totaldown wlan0}  ${alignr}${color #FF0009}Total:${totalup wlan0}
+    ${color white}AP Mode: ${wireless_mode wlan0} ${alignr}AP MAC: ${wireless_ap wlan0}
