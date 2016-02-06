@@ -66,7 +66,7 @@
     ${color green}${downspeedgraph eth0 20,150} ${alignr}${color #FF0009}${upspeedgraph eth0 20,150}
     ${color green}Total:${totaldown eth0}  ${alignr}${color #FF0009}Total:${totalup eth0}
 
-    ${color #B8FF00}WiFi:${color white} ${alignc}                 IP: ${addr wlp2s0} ${alignr}Rate:${color orange}${wireless_bitrate wlp2s0}${color white}
+    ${color #B8FF00}WiFi:${color white} ${alignc}IP: ${addr wlp2s0} ${alignr}Rate:${color orange}${wireless_bitrate wlp2s0}${color white}
     Link quality: ${color orange}${wireless_link_qual_perc wlp2s0}%${color white} ${alignr}${wireless_link_bar 8,185 wlp2s0}
     ${color green}WiFi Download: ${color white}${alignc}    ESSID: ${color orange}${wireless_essid wlp2s0}${color white} $alignr${color #FF0009}WiFi Upload:
     ${color green}${downspeed wlp2s0}KB/s    ${color #FF0009} ${alignr}${upspeed wlp2s0}KB/s
