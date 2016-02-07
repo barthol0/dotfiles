@@ -23,7 +23,7 @@ syntax on
 
 "set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
+"set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
 
@@ -33,7 +33,7 @@ set encoding=utf-8
 " lista dostepnych kodowan jest dostepna w vimie
 " :he encoding-names
 
-set guifont=Inconsolata\ for\ Powerline
+set guifont=Inconsolata\ for\ Powerline\ Medium\ 11
 
 set ruler
 set rulerformat=%40(%y/%{&fenc}/%{&ff}%=%l,%c%V%5(%P%)%)
