@@ -15,7 +15,7 @@
     draw_borders no
     draw_graph_borders yes
     minimum_size 300
-    maximum_width 310
+    maximum_width 320
     default_color white
     default_shade_color 000000
     default_outline_color 000000
