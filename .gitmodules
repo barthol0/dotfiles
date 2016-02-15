@@ -1,0 +1,18 @@
+[submodule "vim/bundle/vim-guicolorscheme"]
+	path = vim/bundle/vim-guicolorscheme
+	url = https://github.com/thinca/vim-guicolorscheme.git
+[submodule "vim/bundle/powerline"]
+	path = vim/bundle/powerline
+	url = https://github.com/powerline/powerline.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "vim/bundle/vim-sensible"]
+	path = vim/bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
