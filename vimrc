@@ -58,6 +58,8 @@ let g:Powerline_symbols = 'fancy'
 "let g:NERDTreeDirArrows = 1
 "let g:NERDTreeDirArrowExpandable = '▸'
 "let g:NERDTreeDirArrowCollapsible = '▾'
+
+autocmd BufEnter * lcd %:p:h
 map <C-n> :NERDTreeToggle<CR>
 
 map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
