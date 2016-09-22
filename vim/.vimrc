@@ -9,8 +9,8 @@ set langmenu=en_US.UTF-8
 "default WORKING DIRECTORY
 ":cd D:\code\
 
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
+"set backupdir=~/.vim/backup//
+"set directory=~/.vim/swp//
 
 set number
 set cursorline
@@ -36,7 +36,7 @@ set encoding=utf-8
 " lista dostepnych kodowan jest dostepna w vimie
 " :he encoding-names
 
-set guifont=Inconsolata\ for\ Powerline\ Medium\ 11
+"set guifont=Inconsolata\ for\ Powerline\ Medium\ 11
 
 set ruler
 set rulerformat=%40(%y/%{&fenc}/%{&ff}%=%l,%c%V%5(%P%)%)
@@ -51,16 +51,11 @@ set ignorecase
 "let g:formatterpath = ['C:\Users\bb\node_modules\js-beautify\js\bin']
 
 "###powerline"
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-set laststatus=2
-let g:Powerline_symbols = 'fancy'
-
-
-"###Python support YouCompleteMe
-let g:ycm_python_binary_path = '/usr/bin/python3'
-
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+"set laststatus=2
+"let g:Powerline_symbols = 'fancy'
 
 "nerdtree"
 "let g:NERDTreeDirArrows = 1
@@ -78,6 +73,8 @@ map <F3> :source ~/vim_session <cr>     " And load session with F3
 let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
+"###Python support YouCompleteMe
+let g:ycm_python_binary_path = '/usr/bin/python3'
 
 "special filetype handling"
 autocmd filetype cpp,h set nolist
