@@ -76,3 +76,4 @@ as the `git` user credentials, e.g.:
 #### Useful notes:
 
 https://git-scm.com/docs/git-credential-store
+https://git-scm.com/book/en/v2/Git-Tools-Submodules
