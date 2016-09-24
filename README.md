@@ -78,3 +78,5 @@ as the `git` user credentials, e.g.:
 https://git-scm.com/docs/git-credential-store
 
 https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+http://superuser.com/questions/561503/cant-add-particular-repo-as-a-submodule
