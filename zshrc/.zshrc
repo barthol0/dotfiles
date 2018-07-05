@@ -84,5 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#Run tmux when zsh terminal is opened
-if [ "$TMUX" = "" ]; then tmux; fi
+# Run tmux when zsh terminal is opened
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
