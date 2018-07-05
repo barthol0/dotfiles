@@ -36,3 +36,8 @@ colors() {
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
 [ -r /home/bartholomeo/.byobu/prompt ] && . /home/bartholomeo/.byobu/prompt   #byobu-prompt#
+
+# Start tmux with every terminal session
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
