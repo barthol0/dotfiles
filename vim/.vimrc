@@ -89,7 +89,7 @@ else
   " This is console Vim.
 
   colorscheme solarized
-  set t_Co=256
+  "set t_Co=256
   let g:solarized_termcolors=256
   set background=dark
   
