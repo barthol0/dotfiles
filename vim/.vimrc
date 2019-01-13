@@ -12,7 +12,10 @@ set langmenu=en_US.UTF-8
 "set backupdir=~/.vim/backup//
 "set directory=~/.vim/swp//
 
-set number
+" turn hybrid line numbers on
+set number relativenumber
+set nu rnu
+
 set cursorline
 set mouse=a
 set autoindent
