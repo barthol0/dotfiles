@@ -66,8 +66,10 @@ source $ZSH/oh-my-zsh.sh
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='mvim'
+   export EDITOR='vim'
  fi
+
+ export VISUAL='vscodium'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -91,3 +93,4 @@ source $ZSH/oh-my-zsh.sh
 alias sudo='sudo '
 alias pip=pip3
 alias python=python3
+
