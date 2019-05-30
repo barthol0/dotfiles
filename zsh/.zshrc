@@ -69,7 +69,7 @@ source $ZSH/oh-my-zsh.sh
    export EDITOR='vim'
  fi
 
- export VISUAL='vscodium'
+ export VISUAL='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -94,3 +94,5 @@ alias sudo='sudo '
 alias pip=pip3
 alias python=python3
 
+# set default terminal colors
+export TERM=xterm-256color
