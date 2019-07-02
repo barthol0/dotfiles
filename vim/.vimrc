@@ -1,3 +1,13 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'https://github.com/scrooloose/nerdtree'
+call plug#end()
+
 ""language of the vim's UI"
 set langmenu=en_US.UTF-8
 
@@ -27,9 +37,9 @@ set incsearch
 set ignorecase
 
 "nerdtree"
-"let g:NERDTreeDirArrows = 1
-"let g:NERDTreeDirArrowExpandable = '▸'
-"let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 autocmd BufEnter * lcd %:p:h
 map <C-n> :NERDTreeToggle<CR>
