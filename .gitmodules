@@ -1,18 +1,9 @@
 [submodule "vim/.vim/bundle/nerdtree"]
 	path = vim/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
-[submodule "vim/.vim/bundle/vim-autoformat"]
-	path = vim/.vim/bundle/vim-autoformat
-	url = https://github.com/Chiel92/vim-autoformat
-[submodule "vim/.vim/bundle/vim-sensible"]
-	path = vim/.vim/bundle/vim-sensible
-	url = https://github.com/tpope/vim-sensible
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "vim/.vim/bundle/vim-colors-solarized"]
-	path = vim/.vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
