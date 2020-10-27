@@ -17,8 +17,8 @@ else
     ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
     update_config=1
     network={
-        ssid=\"TALKTALK0CA4AD\"
-        psk=\"6FY983UF\"
+        ssid=\"WIFI_NAME\"
+        psk=\"WIFI_PASSWORD\"
         key_mgmt=WPA-PSK
     }" >> wpa_supplicant.conf
 fi
