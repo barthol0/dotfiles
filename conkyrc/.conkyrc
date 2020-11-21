@@ -1,75 +1,90 @@
- background yes
-    font Bitstream Vera Sans:size=9
-    xftfont Bitstream Vera Sans:size=9
-    use_xft yes
-    xftalpha 0.1
-    update_interval 0.8
-    total_run_times 0
-    own_window yes
-    own_window_type background
-    own_window_transparent yes
-    own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-    double_buffer yes
-    draw_shades no
-    draw_outline no
-    draw_borders no
-    draw_graph_borders yes
-    minimum_size 300
-    maximum_width 320
-    default_color white
-    default_shade_color 000000
-    default_outline_color 000000
-    alignment top_right
-    gap_x 10
-    gap_y 25
-    no_buffers yes
-    cpu_avg_samples 2
-    override_utf8_locale yes
-    uppercase no # set to yes if you want all text to be in uppercase
-    use_spacer right
+conky.config = {
+    background = true,
+    font = 'Bitstream Vera Sans:size=9',
+    font = 'Bitstream Vera Sans:size=9',
+    use_xft = true,
+    update_interval = 0.8,
+    total_run_times = 0,
+    own_window = true,
+    own_window_type = 'background',
+    own_window_transparent = false,
+    own_window_argb_visual = true,
+    own_window_argb_value = 120,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    border_inner_margin = 5,
+    border_outer_margin = 5,
+    border_width = 5,
+    minimum_width = 100,
+    maximum_width = 500,
+    default_color = 'white',
+    default_shade_color = '#000000',
+    default_outline_color = '#000000',
+    xinerama_head = 3, --draw conky on right monitor
+    alignment = 'top_right',
+    gap_x = 20,
+    gap_y = 80,
+    no_buffers = true,
+    cpu_avg_samples = 2,
+    override_utf8_locale = true,
+    uppercase = false,-- set to yes if you want all text to be in uppercase
+    -- use_spacer = 'right',
+    };
 
-    TEXT
-    $alignc Hostname: $nodename
-    $alignc Kernel: $kernel
-    $alignc Uptime: $uptime
-    $alignc GeForce 9500 GT: ${color orange}${execi 10 nvidia-settings -q gpucoretemp |grep ')'|cut -c45-46}${color white}°C
-    ${font DejaVuSans:Condensed:Bold:size=20} ${tztime}${font Bitstream Vera Sans:size=9}
-    ${color #B8FF00}CPU:${color white}
-    Core0:$alignr ${cpu cpu1}%@${freq_g cpu1}GHz ${cpubar cpu1 7,50} Temp: ${color orange}${execi 		10 sensors | grep "Core 0:" | awk '{print $3}'}
-    Core1:$alignr ${cpu cpu2}%@${freq_g cpu2}GHz ${cpubar cpu2 7,50} Temp: ${color orange}${execi 		10 sensors | grep "Core 1:" | awk '{print $3}'}
+conky.text = [[
+$alignc Hostname: $nodename
+$alignc Kernel: $kernel
+$alignc Uptime: $uptime
+$alignc ${execi 10 nvidia-smi --query-gpu=name --format=csv,noheader}: ${color orange}${execi 5 nvidia-settings -query GPUCoreTemp -t}${color}°C
+$alignc ${font DejaVuSans:Condensed:Bold:size=20} ${tztime}${font Bitstream Vera Sans:size=9}
 
-    Overall Usage:$alignr $cpu% $alignr${cpubar 8,170}
-    ${cpugraph 30,}
-    Highest CPU $alignr CPU%   MEM%
-    ${top name 1}$alignr${top cpu 1}     ${top mem 1}
-    ${top name 2}$alignr${top cpu 2}     ${top mem 2}
+${color #B8FF00}CPU:${color}${alignr}${execi 1000 lscpu | grep "Model name" | sed -r 's/Model name:\s{1,}(.*) @ .*z\s*/\1/g'}
+${color}Core0:$alignr ${cpu cpu1}%@${freq_g cpu1}GHz ${cpubar cpu1 7,50} Temp: ${color orange}${execi 10 sensors | grep "Core 0:" | cut -c17-18}${color}°C
+${color}Core1:$alignr ${cpu cpu2}%@${freq_g cpu2}GHz ${cpubar cpu2 7,50} Temp: ${color orange}${execi 10 sensors | grep "Core 1:" | cut -c17-18}${color}°C
+${color}Core2:$alignr ${cpu cpu3}%@${freq_g cpu3}GHz ${cpubar cpu3 7,50} Temp: ${color orange}${execi 10 sensors | grep "Core 2:" | cut -c17-18}${color}°C
+${color}Core3:$alignr ${cpu cpu4}%@${freq_g cpu4}GHz ${cpubar cpu4 7,50} Temp: ${color orange}${execi 10 sensors | grep "Core 3:" | cut -c17-18}${color}°C
 
-    ${color #B8FF00}MEM:${color white}
-    RAM ${alignr}$mem / $memmax ($memperc%)
-    ${membar 8}
-    SWAP ${alignr}$swap / $swapmax ($swapperc%)
-    ${swapbar 8}
-    Highest MEM $alignr CPU%   MEM%
-    ${top_mem name 1}$alignr${top_mem cpu 1}     ${top_mem mem 1}
-    ${top_mem name 2}$alignr${top_mem cpu 2}     ${top_mem mem 2}
+Overall Usage:$alignr $cpu% $alignr${cpubar 8,170}
+${color 00FFFF}${cpugraph 30, 00FFFF FF0000 -t}${color}
+Highest CPU $alignr CPU%   MEM%
+${top name 1}$alignr${top cpu 1}     ${top mem 1}
+${top name 2}$alignr${top cpu 2}     ${top mem 2}
+${top name 3}$alignr${top cpu 3}     ${top mem 3}
 
-    ${color #B8FF00}HDD:${color white} ${alignr} HDD Temp: ${color orange}${execi 1 /home/ghostrider/.conky_script_hddtemp}.0${color white}°C
-    home: ${alignc} ${fs_bar 8,75 /home/bialx} ${alignr} ${fs_free /home/bialx}  /   ${fs_size /home/bialx} (${fs_free_perc /home/bialx}%)
-    media: ${alignc} ${fs_bar 8,75 /media/multimedia} ${alignr}${fs_free /media/multimedia}  /   ${fs_size /media/multimedia} (${fs_free_perc /media/multimedia}%)
-    inne: ${alignc} ${fs_bar 8,75 /media/inne} ${alignr}${fs_free /media/inne}  /  ${fs_size /media/inne} (${fs_free_perc /media/inne}%)
-    ${color white}HDD Read-> ${alignc}${color green}${diskio_read}/s ${alignr}${color #FF0009}${diskio_write}/s ${color white}<-HDD Write
-    ${color green}${diskiograph_read 20,150} ${alignr}${color #FF0009}${diskiograph_write 20,150}${color white}
+${color #B8FF00}MEM:${color}
+RAM ${alignr}$mem / $memmax ($memperc%)
+${membar 8}
+SWAP ${alignr}$swap / $swapmax ($swapperc%)
+${swapbar 8}
+Highest MEM $alignr CPU%   MEM%
+${top_mem name 1}$alignr${top_mem cpu 1}     ${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}     ${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}     ${top_mem mem 3}
 
-    ${color #B8FF00}LAN:${color white} ${alignr}IP: ${addr eth0}
-    ${color green}LAN Download:                  $alignr${color #FF0009}LAN Upload:
-    ${color green}${downspeed eth0} k/s                                  ${alignr}     ${color #FF0009} ${upspeed eth0} k/s
-    ${color green}${downspeedgraph eth0 20,150} ${alignr}${color #FF0009}${upspeedgraph eth0 20,150}
-    ${color green}Total:${totaldown eth0}  ${alignr}${color #FF0009}Total:${totalup eth0}
+${color #B8FF00}HDD:${color} ${alignr}
+#HDD Temp: ${color orange}${hddtemp /dev/nvme0n1}.0${color}°C
+root: ${alignc} ${fs_bar 8,75 /} ${alignr} ${fs_free /}  /   ${fs_size /} (${fs_free_perc /}%)
+home: ${alignc} ${fs_bar 8,75 /home/bartholo} ${alignr} ${fs_free /home/bartholo}  /   ${fs_size /home/bartholo} (${fs_free_perc /home/bartholo}%)
+${color}HDD Read-> ${alignc}${color green}${diskio_read}/s ${alignr}${color #FF0009}${diskio_write}/s ${color}<-HDD Write
+${color green}${diskiograph_read 20,150} ${alignr}${color #FF0009}${diskiograph_write 20,150}${color}
 
-    ${color #B8FF00}WiFi:${color white} ${alignc}IP: ${addr wlp2s0} ${alignr}Rate:${color orange}${wireless_bitrate wlp2s0}${color white}
-    Link quality: ${color orange}${wireless_link_qual_perc wlp2s0}%${color white} ${alignr}${wireless_link_bar 8,185 wlp2s0}
-    ${color green}WiFi Download: ${color white}${alignc}    ESSID: ${color orange}${wireless_essid wlp2s0}${color white} $alignr${color #FF0009}WiFi Upload:
-    ${color green}${downspeed wlp2s0}KB/s    ${color #FF0009} ${alignr}${upspeed wlp2s0}KB/s
-    ${color green}${downspeedgraph wlp2s0 20,150} ${alignr}${color #FF0009}${upspeedgraph wlp2s0 20,150}
-    ${color green}Total:${totaldown wlp2s0}  ${alignr}${color #FF0009}Total:${totalup wlp2s0}
-    ${color white}AP Mode: ${wireless_mode wlp2s0} ${alignr}AP MAC: ${wireless_ap wlp2s0}
+${color #B8FF00}LAN:${color} ${alignr}IP: ${addr enp0s31f6}
+${color green}LAN Download: $alignr${color #FF0009}LAN Upload:
+${color green}${downspeed enp0s31f6}/s ${alignr} ${color #FF0009} ${upspeed enp0s31f6}/s${color}
+${color green}${downspeedgraph enp0s31f6 20,150} ${alignr}${color #FF0009}${upspeedgraph enp0s31f6 20,150}${color}
+${color green}Total:${totaldown enp0s31f6}  ${alignr}${color #FF0009}Total:${totalup enp0s31f6}${color}
+
+${color #B8FF00}WiFi:${color} ${alignr}IP: ${addr wlp2s0}
+Link quality: ${color orange}${wireless_link_qual_perc wlp2s0}%${color} ${alignr}${wireless_link_bar 8,185 wlp2s0}
+ESSID: ${color orange}${wireless_essid wlp2s0}${color}
+Rate:${color orange}${wireless_bitrate wlp2s0}${color}
+${color green}WiFi Download: ${color} $alignr${color #FF0009}WiFi Upload:
+${color green}${downspeed wlp2s0}/s ${color #FF0009} ${alignr}${upspeed wlp2s0}/s
+${color green}${downspeedgraph wlp2s0 20,150} ${alignr}${color #FF0009}${upspeedgraph wlp2s0 20,150}
+${color green}Total:${totaldown wlp2s0} ${alignr}${color #FF0009}Total:${totalup wlp2s0}
+${color}AP Mode: ${wireless_mode wlp2s0} ${alignr}AP MAC: ${wireless_ap wlp2s0}
+]];
