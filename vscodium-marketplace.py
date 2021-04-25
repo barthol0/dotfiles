@@ -2,15 +2,22 @@ import json
 import os
 
 
-filename_path = '/usr/share/vscodium-bin/resources/app/product.json'
+VSCodiumProductPath = "/usr/share/vscodium-bin/resources/app/product.json"
 service_url = "https://marketplace.visualstudio.com/_apis/public/gallery"
 item_url = "https://marketplace.visualstudio.com/items"
 
-with open(filename_path, 'r') as f:
-    data = json.load(f)
-    data['extensionsGallery']['serviceUrl'] = service_url
-    data['extensionsGallery']['itemUrl'] = item_url
-os.remove(filename_path)
+if not os.path.exists(VSCodiumProductPath) or not os.access(VSCodiumProductPath, os.W_OK):
+    print(
+        "ERROR: Insuficient permissions or did not find VSCode Product file:",
+        VSCodiumProductPath,
+    )
+    exit(1)
 
-with open(filename_path, 'w') as f:
+with open(VSCodiumProductPath, "r") as f:
+    data = json.load(f)
+    data["extensionsGallery"]["serviceUrl"] = service_url
+    data["extensionsGallery"]["itemUrl"] = item_url
+os.remove(VSCodiumProductPath)
+
+with open(VSCodiumProductPath, "w") as f:
     json.dump(data, f, indent=4)
