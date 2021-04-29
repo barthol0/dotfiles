@@ -48,7 +48,7 @@ ${color}Core2:$alignr ${cpu cpu3}% @ ${freq_g cpu3} GHz ${cpubar cpu3 7,50} Temp
 ${color}Core3:$alignr ${cpu cpu4}% @ ${freq_g cpu4} GHz ${cpubar cpu4 7,50} Temp: ${color orange}${execi 10 sensors | grep "Core 3:" | cut -c17-18}${color} °C
 
 Overall Usage:$alignr ${color pink}$cpu${color}% $alignr${cpubar 8,170}
-${color 00FFFF}${cpugraph 30, 00FFFF FF0000 -t}${color}
+${color #00FFFF}${cpugraph 30, #00FFFF #FF0000 -t}${color}
 Highest CPU $alignr CPU%   MEM%
 ${top name 1}$alignr${top cpu 1}     ${top mem 1}
 ${top name 2}$alignr${top cpu 2}     ${top mem 2}
@@ -56,6 +56,7 @@ ${top name 3}$alignr${top cpu 3}     ${top mem 3}
 
 ${color #B8FF00}GPU:${color}${alignr}${execi 10 nvidia-smi --query-gpu=name --format=csv,noheader} @ ${nvidia gpufreqmax} MHz
 Overall Usage: $alignr${color pink}${nvidia gpuutil}${color}% ${nvidiabar 8,170 gpuutil}
+${color #FF5BFF}${nvidiagraph gpuutil 30, #FF5BFF #FF0000 -t}${color}
 Memory: $alignr${color pink}${nvidia memperc}${color}% @ ${nvidia memfreq} MHz ${nvidiabar 7,100 memperc}
 Temp: $alignr${color orange}${nvidia temp}${color} °C
 Frequency: $alignr${nvidia gpufreq} MHz
