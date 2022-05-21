@@ -2,7 +2,8 @@ import json
 import os
 
 
-VSCodiumProductPath = "/usr/share/vscodium-bin/resources/app/product.json"
+# VSCodiumProductPath = "/usr/share/vscodium-bin/resources/app/product.json"
+VSCodiumProductPath = "/opt/vscodium-bin/resources/app/product.json"
 service_url = "https://marketplace.visualstudio.com/_apis/public/gallery"
 item_url = "https://marketplace.visualstudio.com/items"
 
