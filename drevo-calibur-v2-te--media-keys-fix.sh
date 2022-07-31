@@ -1,4 +1,4 @@
-# This is a script to fix Fn+F1...12 combination keys aka media keys, on Linux
+# This is a script to fix Fn+F1...12 combination keys aka media keys on Drevo Calibur V2 Keyboard
 # 
 # Tested on: Manjaro Linux
 #
