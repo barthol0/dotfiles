@@ -1,3 +1,10 @@
+# This is a script to fix Fn+F1...12 combination keys aka media keys, on Linux
+# 
+# Tested on: Manjaro Linux
+#
+# Original author: https://github.com/marzeq/drevo-calibur-2-linux-fnkeys
+#
+
 # For current session
 
 echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
