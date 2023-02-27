@@ -1,18 +1,18 @@
 ```
-      ██            ██     ████ ██  ██                
-     ░██           ░██    ░██░ ░░  ░██                
+      ██            ██     ████ ██  ██
+     ░██           ░██    ░██░ ░░  ░██
      ░██  ██████  ██████ ██████ ██ ░██  █████   ██████
-  ██████ ██░░░░██░░░██░ ░░░██░ ░██ ░██ ██░░░██ ██░░░░ 
- ██░░░██░██   ░██  ░██    ░██  ░██ ░██░███████░░█████ 
+  ██████ ██░░░░██░░░██░ ░░░██░ ░██ ░██ ██░░░██ ██░░░░
+ ██░░░██░██   ░██  ░██    ░██  ░██ ░██░███████░░█████
 ░██  ░██░██   ░██  ░██    ░██  ░██ ░██░██░░░░  ░░░░░██
-░░██████░░██████   ░░██   ░██  ░██ ███░░██████ ██████ 
- ░░░░░░  ░░░░░░     ░░    ░░   ░░ ░░░  ░░░░░░ ░░░░░░  
+░░██████░░██████   ░░██   ░██  ░██ ███░░██████ ██████
+ ░░░░░░  ░░░░░░     ░░    ░░   ░░ ░░░  ░░░░░░ ░░░░░░
 ```
 
 # dotfiles
-in the unix world programs are commonly configured in two different ways, via shell arguments or text based configuration files. programs with many options like window managers or text editors are configured on a per-user basis with files in your home directory `~`. in unix like operating systems any file or directory name that starts with a period or full stop character is considered hidden, and in a default view will not be displayed. thus the name dotfiles. 
+in the unix world programs are commonly configured in two different ways, via shell arguments or text based configuration files. programs with many options like window managers or text editors are configured on a per-user basis with files in your home directory `~`. in unix like operating systems any file or directory name that starts with a period or full stop character is considered hidden, and in a default view will not be displayed. thus the name dotfiles.
 
-it's been said of every console user: 
+it's been said of every console user:
 > _"you are your dotfiles"_.
 
 #installing
@@ -26,7 +26,7 @@ or clone it [from source](https://savannah.gnu.org/git/?group=stow) and [build i
 #how it works
 by default the stow command will create symlinks for files in the parent directory of where you execute the command. so my dotfiles setup assumes this repo is located in the root of your home directory `~/dotfiles`. and all stow commands should be executed in that directory. otherwise you'll need to use the `-d` flag with the repo directory location.
 
-to install most of my configs you execute the stow command with the folder name as the only argument. 
+to install most of my configs you execute the stow command with the folder name as the only argument.
 
 to install my **htop** use the command:
 
@@ -34,11 +34,11 @@ to install my **htop** use the command:
 
 this will symlink files to `~/.config/htop`.
 
-but you can override the default behavior and symlink files to another location with the `-t` (target) argument flag. 
+but you can override the default behavior and symlink files to another location with the `-t` (target) argument flag.
 
 to install the **ryu-login** you need to execute the command:
 
-`stow -t / ryu-login` 
+`stow -t / ryu-login`
 
 this will symlink the file to `/etc/issue`.
 
@@ -80,3 +80,10 @@ https://git-scm.com/docs/git-credential-store
 https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
 http://superuser.com/questions/561503/cant-add-particular-repo-as-a-submodule
+
+## scripts
+
+Pack of my utility scripts.
+
+1. Set up Raspberry Pi OS (previously called Raspbian) to use it headless.
+2. Raspberry Pi - first boot script. Install basic packages, update, configure.
