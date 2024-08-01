@@ -3,8 +3,10 @@ DOTFILES_DIR=$(HOME)/dotfiles
 TARGET_DIR=$(HOME)
 TPM_DIR=$(TARGET_DIR)/.tmux/plugins/tpm
 
-# Default target
-all: stow-tmux install-plugins
+
+all: setup-tmux
+
+setup-tmux: install-tpm stow-tmux install-plugins
 
 stow-tmux:
 	@echo "Stowing tmux configuration..."
@@ -18,13 +20,13 @@ stow-ranger:
 	@echo "Stowing ranger configuration..."
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) ranger
 
-install-tpm:
+tmux-install-tpm:
 	@echo "Installing TPM (Tmux Plugin Manager)..."
 	@if [ ! -d $(TPM_DIR) ]; then \
 		git clone https://github.com/tmux-plugins/tpm $(TPM_DIR); \
 	fi
 
-install-plugins: install-tpm
+tmux-install-plugins:
 	@echo "Installing tmux plugins..."
 	$(TARGET_DIR)/.tmux/plugins/tpm/bin/install_plugins
 
