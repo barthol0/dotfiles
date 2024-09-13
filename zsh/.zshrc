@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -104,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias c="codium"
 
-# pnpm
+# pnpm configuration
 export PNPM_HOME="/home/bbart/.local/share/pnpm"
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
@@ -112,6 +114,15 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# NVM configuration
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# Custom shortcuts for zsh-autosuggestions
+bindkey '^[i' autosuggest-accept
+bindkey '^[o' autosuggest-clear
+
+# Initialize zsh tab-completion system
+autoload -Uz compinit
+compinit
