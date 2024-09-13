@@ -1,34 +1,36 @@
-# Define variables
 DOTFILES_DIR=$(HOME)/dotfiles
 TARGET_DIR=$(HOME)
-TPM_DIR=$(TARGET_DIR)/.tmux/plugins/tpm
 
+all: setup-tmux setup-zsh
 
-all: setup-tmux
+setup-tmux: stow-tmux tmux-install-tpm
 
-setup-tmux: install-tpm stow-tmux install-plugins
+setup-zsh: stow-zsh install-zsh-autosuggestions
 
 stow-tmux:
 	@echo "Stowing tmux configuration..."
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) tmux
+	@echo "...Done."
 
 stow-zsh:
 	@echo "Stowing zsh configuration..."
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) zsh
+	@echo "...Done."
 
 stow-ranger:
 	@echo "Stowing ranger configuration..."
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) ranger
+	@echo "...Done."
 
 tmux-install-tpm:
-	@echo "Installing TPM (Tmux Plugin Manager)..."
-	@if [ ! -d $(TPM_DIR) ]; then \
-		git clone https://github.com/tmux-plugins/tpm $(TPM_DIR); \
-	fi
+	@echo "Running TPM installation script..."
+	@./scripts/setup/install-tpm.sh
+	@echo "...Done."
 
-tmux-install-plugins:
-	@echo "Installing tmux plugins..."
-	$(TARGET_DIR)/.tmux/plugins/tpm/bin/install_plugins
+install-zsh-autosuggestions:
+	@echo "Running zsh-autosuggestions installation script..."
+	@./scripts/setup/install-zsh-autosuggestions.sh
+	@echo "...Done."
 
 # Clean target to remove all stowed configurations
 clean:
