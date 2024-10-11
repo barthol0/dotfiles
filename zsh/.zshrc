@@ -96,6 +96,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+export dots="$HOME/dotfiles"
+export codedir="$HOME/code"
+export gymusic="$HOME/Music/music/workout\ playlist"
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -105,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias c="codium"
+alias dlm="yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0 -P $gymusic"
 
 # pnpm configuration
 export PNPM_HOME="/home/bbart/.local/share/pnpm"
