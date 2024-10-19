@@ -1,11 +1,16 @@
 DOTFILES_DIR=$(HOME)/dotfiles
 TARGET_DIR=$(HOME)
 
-all: setup-tmux setup-zsh
+all: setup-tmux setup-zsh stow-alacritty
 
 setup-tmux: stow-tmux tmux-install-tpm
 
 setup-zsh: stow-zsh install-zsh-autosuggestions
+
+stow-alacritty:
+	@echo "Stowing alacritty configuration..."
+	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR)/.config/alacritty alacritty
+	@echo "...Done."
 
 stow-tmux:
 	@echo "Stowing tmux configuration..."
@@ -41,4 +46,4 @@ clean:
 	@echo "Cleaning up stowed configurations..."
 	stow -D -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) tmux zsh
 
-.PHONY: all stow-tmux stow-zsh install-tpm install-plugins clean
+.PHONY: all stow-tmux stow-zsh stow-alacritty install-tpm install-plugins mpv-config clean
