@@ -32,7 +32,11 @@ install-zsh-autosuggestions:
 	@./scripts/setup/install-zsh-autosuggestions.sh
 	@echo "...Done."
 
-# Clean target to remove all stowed configurations
+mpv-config:
+	@echo "Running mpv configuration script..."
+	@./scripts/setup/mpv-config-with-uosc-thumbfast.sh
+	@echo "...Done."
+
 clean:
 	@echo "Cleaning up stowed configurations..."
 	stow -D -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) tmux zsh
