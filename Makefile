@@ -19,6 +19,10 @@ stow-tmux:
 
 stow-zsh:
 	@echo "Stowing zsh configuration..."
+	@if [ -f $(TARGET_DIR)/.zshrc ] && [ ! -L $(TARGET_DIR)/.zshrc ]; then \
+		echo "Backing up existing .zshrc to .zshrc.backup"; \
+		mv $(TARGET_DIR)/.zshrc $(TARGET_DIR)/.zshrc.backup; \
+	fi
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) zsh
 	@echo "...Done."
 
