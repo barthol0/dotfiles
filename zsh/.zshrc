@@ -130,3 +130,6 @@ bindkey '^[o' autosuggest-clear
 # Initialize zsh tab-completion system
 autoload -Uz compinit
 compinit
+
+# Required for ssh-agent
+export SSH_AUTH_SOCK=$(find /tmp/ -type s -name 'agent.*' -user $USER 2>/dev/null | head -n 1)
