@@ -17,6 +17,11 @@ stow-tmux:
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) tmux
 	@echo "...Done."
 
+tmux-install-tpm:
+	@echo "Running TPM installation script..."
+	@./scripts/setup/install-tpm.sh
+	@echo "...Done."
+	
 stow-zsh:
 	@echo "Stowing zsh configuration..."
 	@if [ -f $(TARGET_DIR)/.zshrc ] && [ ! -L $(TARGET_DIR)/.zshrc ]; then \
