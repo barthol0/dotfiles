@@ -31,6 +31,11 @@ stow-zsh:
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) zsh
 	@echo "...Done."
 
+install-zsh-autosuggestions:
+	@echo "Running zsh-autosuggestions installation script..."
+	@./scripts/setup/install-zsh-autosuggestions.sh
+	@echo "...Done."
+
 stow-ranger:
 	@echo "Stowing ranger configuration..."
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) ranger
