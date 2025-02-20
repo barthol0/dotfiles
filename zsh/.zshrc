@@ -99,6 +99,18 @@ source $ZSH/oh-my-zsh.sh
 export DOTS="$HOME/dotfiles"
 export CODE="$HOME/code"
 export GYMUSIC="$HOME/Music/music/workout\ playlist"
+
+rm() {
+  if [[ "$1" == "-r" || "$1" == "-rf" || "$1" == "-fr" ]]; then
+    shift
+    gio trash "$@"
+  elif [[ "$1" == "-f" ]]; then
+    shift
+    gio trash "$@"
+  else
+    gio trash "$@"
+  fi
+}
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -109,6 +121,7 @@ export GYMUSIC="$HOME/Music/music/workout\ playlist"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias c="codium"
 alias dlm="yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0 -P $GYMUSIC"
+alias 'rm!'='/bin/rm'
 
 # pnpm configuration
 export PNPM_HOME="$HOME/.local/share/pnpm"
