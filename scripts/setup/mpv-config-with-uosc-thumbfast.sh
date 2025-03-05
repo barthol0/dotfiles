@@ -38,6 +38,9 @@ geometry=960x487
 # add black bars to either sides to keep the aspect ratio specified by geometry
 no-keepaspect-window
 
+# disable auto resize
+auto-window-resize=no
+
 # set file loop
 loop-file=inf
 
