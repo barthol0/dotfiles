@@ -146,3 +146,13 @@ compinit
 
 # Required for ssh-agent
 export SSH_AUTH_SOCK=$(find /tmp/ -type s -name 'agent.*' -user $USER 2>/dev/null | head -n 1)
+
+# Java
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Android
+export ANDROID_HOME="$HOME/Android/Sdk"
+export NDK_HOME="$ANDROID_HOME/ndk/28.0.13004108"
+export CAPACITOR_ANDROID_STUDIO_PATH="/opt/android-studio/bin/studio.sh"
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$NDK_HOME"
