@@ -1,4 +1,3 @@
-# Add deno completions to search path
 if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -123,19 +122,6 @@ alias c="codium"
 alias dlm="yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0 -P $GYMUSIC"
 alias 'rm!'='/bin/rm'
 
-# pnpm configuration
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# NVM configuration
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 # Custom shortcuts for zsh-autosuggestions
 bindkey '^[i' autosuggest-accept
 bindkey '^[o' autosuggest-clear
@@ -146,6 +132,18 @@ compinit
 
 # Required for ssh-agent
 export SSH_AUTH_SOCK=$(find /tmp/ -type s -name 'agent.*' -user $USER 2>/dev/null | head -n 1)
+
+# pnpm configuration
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# NVM configuration
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
