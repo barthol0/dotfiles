@@ -31,6 +31,7 @@ configure_mpv_conf() {
     cat <<EOT >~/.config/mpv/mpv.conf
 # keep open at end
 keep-open=yes
+idle=yes
 
 # always spawn the window in 960x487 and in the center of the screen
 geometry=960x487
@@ -62,14 +63,18 @@ configure_input_conf() {
     echo "Configuring custom keyboard shortcuts in input.conf..."
     cat <<'EOT' >~/.config/mpv/input.conf
 
-Alt+k playlist-shuffle ; show-text "playlist shuffled" 2000 
+Alt+k playlist-shuffle ; show-text "playlist shuffled" 3000
 p playlist-prev
 n playlist-next
 
-Shift+Del run gio trash ${path}; playlist-remove current
+WHEEL_UP seek 10
+WHEEL_DOWN seek -10
+
+Shift+Del run gio trash ${path}; show-text "DELETED:\n${filename}" 5000; playlist-remove current
 
 tab  script-binding uosc/toggle-ui
 
+k show-text "Loop A: ${ab-loop-a}\nLoop B: ${ab-loop-b}"
 EOT
 }
 
