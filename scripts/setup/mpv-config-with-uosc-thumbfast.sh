@@ -20,9 +20,9 @@ install_uosc() {
 install_thumbfast() {
     echo "Installing Thumbfast for thumbnail preview..."
     mkdir -p ~/.config/mpv/scripts/
-    curl -L https://raw.githubusercontent.com/po5/thumbfast/master/thumbfast.lua -o ~/.config/mpv/scripts/thumbfast.lua
+    curl -fsSL https://raw.githubusercontent.com/po5/thumbfast/master/thumbfast.lua -o ~/.config/mpv/scripts/thumbfast.lua
     mkdir -p ~/.config/mpv/script-opts/
-    curl -L https://raw.githubusercontent.com/po5/thumbfast/master/thumbfast.conf -o ~/.config/mpv/script-opts/thumbfast.conf
+    curl -fsSL https://raw.githubusercontent.com/po5/thumbfast/master/thumbfast.conf -o ~/.config/mpv/script-opts/thumbfast.conf
 }
 
 # Function to configure mpv.conf
@@ -52,7 +52,7 @@ EOT
 install_persist_properties() {
     echo "Installing persist-properties script..."
     mkdir -p ~/.config/mpv/scripts/
-    curl -L https://raw.githubusercontent.com/d87/mpv-persist-properties/master/persist-properties.lua -o ~/.config/mpv/scripts/persist-properties.lua
+    curl -fsSL https://raw.githubusercontent.com/d87/mpv-persist-properties/master/persist-properties.lua -o ~/.config/mpv/scripts/persist-properties.lua
 
     echo "Setting persist_properties configuration..."
     echo "properties=volume,sub-scale" >~/.config/mpv/script-opts/persist_properties.conf
