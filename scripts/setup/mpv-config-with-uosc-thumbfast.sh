@@ -144,6 +144,33 @@ mp.add_key_binding("Ctrl+j", "save-loop-to-json", save_loop_to_json)
 EOT
 }
 
+# Function to install pointer-event and mpv-touch-gestures
+install_pointer_event_and_touch_gestures() {
+    echo "Installing pointer-event and touch-gestures..."
+
+    local mpv_config_dir="$HOME/.config/mpv"
+    local scripts_dir="$mpv_config_dir/scripts"
+    local script_opts_dir="$mpv_config_dir/script-opts"
+
+    mkdir -p "$scripts_dir" "$script_opts_dir"
+
+    # Download pointer-event.lua
+    curl -fsSL https://raw.githubusercontent.com/christoph-heinrich/mpv-pointer-event/master/pointer-event.lua -o "$scripts_dir/pointer-event.lua"
+
+    # Download touch-gestures.lua
+    curl -fsSL https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/master/touch-gestures.lua -o "$scripts_dir/touch-gestures.lua"
+
+    # Download pointer-event.conf
+    curl -fsSL https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/master/pointer-event.conf -o "$script_opts_dir/pointer-event.conf"
+
+    # Optional: download touch-gestures.conf
+    curl -fsSL https://raw.githubusercontent.com/christoph-heinrich/mpv-touch-gestures/master/touch-gestures.conf -o "$script_opts_dir/touch-gestures.conf"
+
+    echo "Disabling window dragging to avoid conflicts with gesture detection..."
+    echo "--no-window-dragging" >> "$mpv_config_dir/mpv.conf"
+}
+
+
 check_mpv_installation
 install_uosc
 install_thumbfast
@@ -151,5 +178,6 @@ configure_mpv_conf
 install_persist_properties
 configure_input_conf
 install_save_loop_to_json
+install_pointer_event_and_touch_gestures
 
 echo "MPV setup complete with UOSC and Thumbfast!"
