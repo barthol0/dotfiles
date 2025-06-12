@@ -178,6 +178,6 @@ configure_mpv_conf
 install_persist_properties
 configure_input_conf
 install_save_loop_to_json
-install_pointer_event_and_touch_gestures
+# install_pointer_event_and_touch_gestures
 
 echo "MPV setup complete with UOSC and Thumbfast!"
