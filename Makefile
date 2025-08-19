@@ -9,6 +9,7 @@ setup-zsh: stow-zsh install-zsh-autosuggestions
 
 stow-alacritty:
 	@echo "Stowing alacritty configuration..."
+	@mkdir -p $(TARGET_DIR)/.config/alacritty
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR)/.config/alacritty alacritty
 	@echo "...Done."
 
@@ -39,16 +40,6 @@ install-zsh-autosuggestions:
 stow-ranger:
 	@echo "Stowing ranger configuration..."
 	stow -v -d $(DOTFILES_DIR) -t $(TARGET_DIR) ranger
-	@echo "...Done."
-
-tmux-install-tpm:
-	@echo "Running TPM installation script..."
-	@./scripts/setup/install-tpm.sh
-	@echo "...Done."
-
-install-zsh-autosuggestions:
-	@echo "Running zsh-autosuggestions installation script..."
-	@./scripts/setup/install-zsh-autosuggestions.sh
 	@echo "...Done."
 
 mpv-config:
