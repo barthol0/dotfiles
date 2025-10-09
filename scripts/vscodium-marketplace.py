@@ -29,6 +29,7 @@ VSCodiumProductPath = "/opt/vscodium-bin/resources/app/product.json"
 service_url = "https://marketplace.visualstudio.com/_apis/public/gallery"
 item_url = "https://marketplace.visualstudio.com/items"
 extension_url_template = "https://www.vscode-unpkg.net/_gallery/{publisher}/{name}/latest"
+latest_url_template = "https://marketplace.visualstudio.com/_apis/public/gallery/vscode/{publisher}/{name}/latest"
 
 # OPEN-VSX 
 # service_url = "https://open-vsx.org/vscode/gallery"
@@ -36,6 +37,7 @@ extension_url_template = "https://www.vscode-unpkg.net/_gallery/{publisher}/{nam
 # extension_url_template = (
 #     "https://open-vsx.org/vscode/gallery/{publisher}/{name}/{version}"
 # )
+# latest_url_template = "https://open-vsx.org/vscode/gallery/{publisher}/{name}/latest"
 
 if not os.path.exists(VSCodiumProductPath) or not os.access(
     VSCodiumProductPath, os.W_OK
@@ -51,6 +53,7 @@ with open(VSCodiumProductPath, "r") as f:
     data["extensionsGallery"]["serviceUrl"] = service_url
     data["extensionsGallery"]["itemUrl"] = item_url
     data["extensionsGallery"]["extensionUrlTemplate"] = extension_url_template
+    data["extensionsGallery"]["latestUrlTemplate"] = latest_url_template
 os.remove(VSCodiumProductPath)
 
 with open(VSCodiumProductPath, "w") as f:
